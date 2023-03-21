@@ -27,7 +27,8 @@ resource "aws_iam_policy" "policiy" {
     name = "example-policiy"
     policiy = jsonencode(merge(
         jsonencode(file("${path.module}/policy1.json")),
-        jsonencode(file("${path.module}/policy2.json")),
+        jsonencode(file("${path.module}/policy2.json"))
+      ))
 }
 
 resource "aws_iam_access_key" "example" {
