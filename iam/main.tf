@@ -23,11 +23,11 @@ resource "aws_iam_policy" "policy2" {
   policy      = "${file("regionrestriction.json")}"
 }
 
-resource "aws_iam_policy" "policiy" {
-    name = "example-policiy"
+resource "aws_iam_policy" "policy" {
+    name = "example-policy"
     policiy = jsonencode(merge(
-        jsonencode(file("${path.module}/policy1.json")),
-        jsonencode(file("${path.module}/policy2.json"))
+        jsondecode(file("${path.module}/policy1.json")),
+        jsondecode(file("${path.module}/policy2.json"))
       ))
 }
 
