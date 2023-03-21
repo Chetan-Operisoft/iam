@@ -26,8 +26,8 @@ resource "aws_iam_policy" "policy2" {
 resource "aws_iam_policy" "policy" {
     name   = "example-policy"
     policy = jsonencode(merge(
-        jsondecode(file("${path.module}/policy1.json")),
-        jsondecode(file("${path.module}/policy2.json"))
+        jsondecode(file("${../}/ec2fullaccess.json")),
+        jsondecode(file("${../}/regionrestriction.json"))
       ))
 }
 
