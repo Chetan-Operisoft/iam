@@ -23,9 +23,9 @@ resource "aws_iam_policy" "policy2" {
   policy      = "${file("ec2fullaccess.json")}"
 }
 
-resource "aws_iam_user_policy_attachment" "demo-attach"{
-    user = "${aws_iam_user.newuser.name}"
-    policy_arns = ["${aws_iam_policy.policy1.arn}","${aws_iam_policy.policy2.arn}"]
+resource "aws_iam_policy_attachment" "policies" {
+  policy_arns = [aws_iam_policy.policy1.arn, aws_iam_policy.policy2.arn]
+  users       = [aws_iam_user.example.name]
 }
 
 
