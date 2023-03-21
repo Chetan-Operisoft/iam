@@ -4,7 +4,7 @@
         {
             "Effect": "Allow",
             "Action": [
-                "ec2:*",
+                "ec2:*"
             ],
             "Resource": "*",
     "Condition": {"StringEquals": {"aws:RequestedRegion": "ap-south-1"}}
