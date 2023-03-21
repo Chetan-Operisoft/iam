@@ -24,6 +24,13 @@ resource "aws_iam_policy" "policy2" {
 }
 
 resource "aws_iam_policy_attachment" "policies" {
+    count = length(var.policy_arn)
+
+    policy_arn = var.policy_arn[count.index]
+    users      = [aws_iam_user.newuser]
+}
+
+resource "aws_iam_policy_attachment" "policies" {
   users      =  aws_iam_user.newuser.name
   policy_arn =  aws_iam_policy.policy1.arn, aws_iam_policy.policy2.arn
 }
