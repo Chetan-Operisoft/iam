@@ -31,8 +31,8 @@ resource "aws_iam_policy_attachment" "policies" {
 }
 
 resource "aws_iam_policy_attachment" "policies" {
-  users      =  "${aws_iam_user.newuser.name}"
-  policy_arn =  "${aws_iam_policy.policy1.arn, aws_iam_policy.policy2.arn}"
+  users      =  aws_iam_user.newuser.name
+  policy_arn =  aws_iam_policy.policy1.arn, aws_iam_policy.policy2.arn
 }
 
 
