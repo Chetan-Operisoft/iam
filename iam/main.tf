@@ -30,12 +30,6 @@ resource "aws_iam_policy_attachment" "policies" {
     users      = [aws_iam_user.newuser]
 }
 
-resource "aws_iam_policy_attachment" "policies" {
-  users      =  aws_iam_user.newuser.name
-  policy_arn =  aws_iam_policy.policy1.arn, aws_iam_policy.policy2.arn
-}
-
-
 
 resource "aws_iam_access_key" "example" {
   user = aws_iam_user.newuser.name
