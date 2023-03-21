@@ -23,13 +23,6 @@ resource "aws_iam_policy" "policy2" {
   policy      = "${file("regionrestriction.json")}"
 }
 
-resource "aws_iam_policy_attachment" "policies" {
-  policy_arns = [aws_iam_policy.policy1.arn, aws_iam_policy.policy2.arn]
-  users       = [aws_iam_user.newuser.name]
-}
-
-
-
 resource "aws_iam_access_key" "example" {
   user = aws_iam_user.newuser.name
 }
