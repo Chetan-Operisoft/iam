@@ -5,8 +5,6 @@
             "Effect": "Allow",
             "Action": [
                 "ec2:*",
-                "rds:*",
-                "s3:*"
             ],
             "Resource": "*",
     "Condition": {"StringEquals": {"aws:RequestedRegion": "ap-south-1"}}
