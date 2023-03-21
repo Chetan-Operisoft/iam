@@ -33,8 +33,8 @@ resource "aws_iam_policy_attachment" "policies" {
 variable "policy_arn" {
     type = list(string)
     default = [
-        aws_iam_policy.policy1.arn
-        aws_iam_policy.policy2.arn
+        aws_iam_policy.policy1.arn,
+        aws_iam_policy.policy2.arn,
     ]
 }
 
