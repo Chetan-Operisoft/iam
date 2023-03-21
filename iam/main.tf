@@ -26,8 +26,8 @@ resource "aws_iam_policy" "policy2" {
 #resource "aws_iam_policy" "policy" {
 #    name   = "example-policy"
 #    policy = jsonencode(merge(
-#        jsondecode(file("${../}/ec2fullaccess.json")),
-#        jsondecode(file("${../}/regionrestriction.json"))
+#        jsondecode(file("${../}/.json")),
+#        jsondecode(file("${../}/.json"))
 #      ))
 #}
 
@@ -41,8 +41,8 @@ resource "aws_iam_policy_attachment" "policies" {
 variable "policy_arn" {
     type = list(string)
     default = [
-        aws_iam_policy.policy1.arn,
-        aws_iam_policy.policy2.arn,
+        aws_iam_policy.ec2fullaccess1.arn,
+        aws_iam_policy.regionrestriction.arn
     ]
 }
 
