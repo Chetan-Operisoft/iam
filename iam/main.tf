@@ -23,28 +23,14 @@ resource "aws_iam_policy" "policy2" {
   policy      = "${file("regionrestriction.json")}"
 }
 
-#resource "aws_iam_policy" "policy" {
-#    name   = "example-policy"
-#    policy = jsonencode(merge(
-#        jsondecode(file("${../}/.json")),
-#        jsondecode(file("${../}/.json"))
-#      ))
-#}
-
-resource "aws_iam_policy_attachment" "policies" {
-    count = length(var.policy_arn)
-
-    policy_arn = var.policy_arn[count.index]
-    users      = [aws_iam_user.newuser]
+resource "aws_iam_policy" "policy" {
+    name   = "example-policy"
+    policy = jsonencode(merge(
+        jsondecode(file("${../}/.json")),
+        jsondecode(file("${../}/.json"))
+      ))
 }
 
-variable "policy_arn" {
-    type = list(string)
-    default = [
-        aws_iam_policy.ec2fullaccess1.arn,
-        aws_iam_policy.regionrestriction.arn
-    ]
-}
 
 
 resource "aws_iam_access_key" "example" {
